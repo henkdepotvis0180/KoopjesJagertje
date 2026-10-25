@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#254f40">
+  <title>KoopjesJagertje — vind jouw volgende vondst</title>
+  <link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="KoopjesJagertje startpagina"><span class="brand-icon">k<span>✦</span></span><span>koopjes<span class="brand-light">jagertje</span><small>GROTE VONDSTEN. KLEINE PRIJZEN.</small></span></a>
+    <p class="nav-label">JOUW OVERZICHT</p>
+    <nav aria-label="Hoofdnavigatie">
+      <button class="nav-item active" data-view="discover"><span aria-hidden="true">⌕</span> Ontdekken <span class="nav-arrow">↗</span></button>
+      <button class="nav-item" data-view="favorites"><span aria-hidden="true">♡</span> Favorieten <span id="favorite-count" class="count">0</span></button>
+    </nav>
+    <div class="saved-heading"><p class="nav-label">BEWAARDE ZOEKOPDRACHTEN</p><span aria-hidden="true">↙</span></div>
+    <div id="saved-searches"></div>
+    <p class="sidebar-hint">Een goede deal begint met weten wat je zoekt.</p>
+    <div class="local-box"><span class="status-dot"></span><strong>Jouw eigen koopjeshoek</strong><p>Draait lokaal. Je zoekopdrachten en favorieten blijven in deze browser.</p><button id="about-open">Hoe werkt het? <span>↗</span></button></div>
+    <div class="sidebar-bottom">Met een neus voor koopjes <span>✦</span></div>
+  </aside>
+  <main>
+    <header class="topbar"><span>Jouw volgende vondst wacht op je.</span><span class="local-pill"><span class="status-dot"></span> Lokaal & privé</span></header>
+    <section class="intro"><div><div class="eyebrow">MINDER ZOEKEN, MEER VINDEN</div><h1 id="page-title">Op jacht naar iets <em>moois.</em></h1><p id="page-description">Vertel wat je zoekt. Wij helpen je een goede deal te spotten.</p></div><div class="intro-stamp" aria-hidden="true">GOEDE<br>VONDST!<span>✳</span></div></section>
+    <section class="search-panel" aria-label="Zoek een aanbieding">
+      <form id="search-form">
+        <div class="search-fields"><label class="query-label"><span>Wat staat er op je verlanglijst?</span><div class="input-wrap"><span aria-hidden="true">⌕</span><input id="query" name="q" placeholder="Bijv. Nintendo Switch, racefiets, Sonos…" maxlength="100" required value="Nintendo Switch"></div></label><label class="price-label"><span>Maximumprijs</span><div class="input-wrap"><span>€</span><input id="max-price" type="number" min="0" max="1000000" step="0.01" placeholder="Geen limiet" value="200"></div></label><button class="primary search-button" type="submit"><span aria-hidden="true">⌕</span> Zoek koopjes</button></div>
+        <div class="search-bottom"><span><span class="status-dot"></span> Openbaar zoeken op Marktplaats</span><button class="text-button" type="button" id="save-search">＋ Bewaar zoekopdracht</button></div>
+      </form>
+    </section>
+    <div class="source-note"><span class="info-symbol">i</span><p>Facebook Marketplace liever zelf bekijken? <a id="facebook-link" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/marketplace/category/search/?query=Nintendo%20Switch">Open deze zoekopdracht <span aria-hidden="true">↗</span></a><small>Facebook kan om inloggen vragen.</small></p></div>
+    <section class="results-section" aria-label="Zoekresultaten">
+      <div class="results-header"><div><h2 id="results-title">Jouw vondsten <span id="result-count">0</span></h2><p id="results-description">Zoek naar iets dat jij graag wilt hebben.</p></div><div class="result-controls"><button id="demo-toggle" class="outline-button">Bekijk demo</button><label class="sort-label"><span class="sr-only">Sorteer aanbiedingen</span><select id="sort"><option value="default">Standaard volgorde</option><option value="price-asc">Prijs: laag naar hoog</option><option value="price-desc">Prijs: hoog naar laag</option></select></label></div></div>
+      <div id="demo-notice" class="demo-notice" hidden><strong>Demomodus</strong> Dit zijn verzonnen voorbeeldadvertenties. Zoek op Marktplaats voor echte aanbiedingen.</div>
+      <div id="feedback" role="status" aria-live="polite"></div>
+      <div id="results" class="card-grid"></div>
+      <div id="empty-state" class="empty-state"><span class="empty-icon" aria-hidden="true">⌕</span><h3>Er ligt vast iets moois op je te wachten.</h3><p>Vul een item en je budget in en klik op ‘Zoek koopjes’.<br>Of bekijk de demo om even rond te snuffelen.</p><button id="empty-demo" class="outline-button">Ontdek de demo ↗</button></div>
+    </section>
+    <footer><span>Een tweede leven. Een betere prijs.</span><span>KoopjesJagertje <span aria-hidden="true">✦</span></span></footer>
+  </main>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="about-dialog"><button class="dialog-close" aria-label="Sluiten">×</button><div class="eyebrow">ZO WERKT HET</div><h2>Jij zoekt.<br>Wij snuffelen mee.</h2><p>KoopjesJagertje draait op je eigen computer. Je hebt geen account bij deze website nodig.</p><h3>Marktplaats</h3><p>We vragen maximaal 50 openbare resultaten op. Prijzen en beschikbaarheid kunnen veranderen. Met een maximumprijs worden advertenties zonder vaste prijs weggelaten. Biedprijzen zijn herkenbaar als ‘Bieden vanaf’. Een lage prijs is geen garantie voor een goede koop.</p><h3>Facebook Marketplace</h3><p>De knop opent je zoekopdracht op Facebook. Facebook kan een account vereisen; advertenties ophalen zonder account is daar niet betrouwbaar beschikbaar.</p><h3>Jouw gegevens</h3><p>Bewaren gebeurt alleen in de lokale opslag van deze browser. Zoektermen worden naar Marktplaats gestuurd zodra je zoekt. Advertentieafbeeldingen laden vanaf Marktplaats. Er draaien geen achtergrondzoekopdrachten of meldingen.</p><button id="clear-data" class="outline-button">Wis bewaarde zoekopdrachten en favorieten</button></dialog>
+</body>
+</html>
